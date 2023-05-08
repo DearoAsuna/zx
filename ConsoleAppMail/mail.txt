@@ -1,0 +1,3 @@
+﻿SmtpClient=abc.com
+Username=smd
+Password=hahah

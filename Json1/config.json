@@ -1,0 +1,21 @@
+﻿{
+  "smd":
+  {
+    "name": "smd",
+    "age": "20",
+    "Proxy": {
+      "address": "aa",
+      "port": "80"
+    }
+  },
+  "smd2":
+  {
+    "name":  "smd2",
+    "age": "20",
+    "Proxy": {
+      "address": "aa",
+      "port": "80"
+    }
+  }
+
+}
