@@ -11,10 +11,12 @@ namespace EF3
         public int id { get; set; }
         public string title { get; set; }
         public string Message { get; set; }
+        public bool IsDeletede { get; set; }
         public List<Commnet> Commnets { get; set; } = new List<Commnet>();
         public override string ToString()
         {
             return $"id {id} message {Message} title {title}";
         }
+
     }
 }

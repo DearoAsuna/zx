@@ -281,11 +281,22 @@ namespace EF3
                 var commnet = d.Commnets.SingleOrDefault(a => a.id == 1);
                 Console.WriteLine(commnet.Article.Message);
             }*/
+            /*using (var i=new MyDbcontext())
+            {
+                var queryable = i.Articles.Where(a => a.id > 60);
+                foreach (var i1 in queryable)
+                {
+                    i.Articles.Remove(i1);
+                }
+
+                i.SaveChangesAsync();
+            }*/
 
             #endregion
 
             #region 状态跟踪
 
+            /*
             using (var i =new MyDbcontext())
             {
                 var article = i.Articles.First();
@@ -293,6 +304,53 @@ namespace EF3
                 var entityEntry = i.Entry(article);
                 Console.WriteLine(entityEntry);
             }
+            */
+
+            #endregion
+
+            #region 跟踪
+
+            #region update
+
+            /*using (var i = new MyDbcontext())
+            {
+                var article = new Article()
+                {
+                    id = 9,
+                    Message = "黑客！"
+                };
+                i.Entry(article).Property("Message").IsModified = true;
+                i.SaveChanges();
+            }*/
+            #endregion
+
+            #region remove
+
+            /*using (var i=new MyDbcontext())
+            {
+                var commnet = new Commnet()
+                {
+                    id = 110
+                };
+                i.Entry(commnet).State = EntityState.Deleted;
+               await i.SaveChangesAsync();
+            }*/
+
+            #endregion
+
+            #region 过滤器
+
+            using (var i=new MyDbcontext())
+            {
+                var queryable = i.Articles.Where(a => a.id > 1);
+                foreach (var i1 in queryable)
+                {
+                    Console.WriteLine(i1);
+                }
+            }
+
+            #endregion
+
 
             #endregion
         }

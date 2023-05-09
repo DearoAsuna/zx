@@ -51,6 +51,8 @@ namespace EF4
                 }
             }
 
+            Console.WriteLine(111);
+
             #endregion
         }
     }
