@@ -19,6 +19,7 @@ namespace EF3
 
             builder.Property(a => a.title)
                 .IsUnicode().HasMaxLength(255);
+            builder.HasQueryFilter(a => a.IsDeletede == true);
         }
     }
 }
