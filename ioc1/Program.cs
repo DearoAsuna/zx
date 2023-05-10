@@ -21,7 +21,7 @@ namespace ioc1
                   var service1 = sp.GetRequiredService<Test>();
                    service1.name = "smd1";
                    service1.Say();
-                   service.Say();*/ 
+                   service.Say(); */
                 #endregion
 
                 var controller = sp.GetRequiredService<Controller>();
