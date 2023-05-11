@@ -8,6 +8,7 @@ namespace ioc1
         {
             var collection = new ServiceCollection();
             collection.AddScoped<ITest,Test>();
+
             collection.AddScoped<Controller>();
             using (var sp 
                    = collection.BuildServiceProvider())
