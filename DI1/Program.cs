@@ -8,9 +8,10 @@ namespace DI1
         {
             var collection = new ServiceCollection();
             collection.AddScoped<Controller>();
-            collection.AddScoped<ILog,LogImpl>();
+            collection.AddScoped(typeof(ILog),a
+                =>new LogImpl("smd1111"));
             collection.AddScoped<IStorage,StroageImpl>();
-   //       collection.AddScoped<IConfig,ConfigImpl>();
+            collection.AddScoped<IConfig,ConfigImpl>();
             collection.AddScoped<IConfig,DBconfig>();
 
             using (var provider = collection.BuildServiceProvider())
@@ -49,14 +50,14 @@ namespace DI1
 
         class LogImpl:ILog
         {
-            private string name;
-            public LogImpl()
+            private string Name;
+            public LogImpl(string name)
             {
-                this.name = "smd";
+                Name =name ;
             }
             public void Log(string message)
             {
-                Console.WriteLine($"日志:{message}");
+                Console.WriteLine($"日志:{message}+{Name}");
             }
         }
 
@@ -75,6 +76,10 @@ namespace DI1
 
         class DBconfig: IConfig
         {
+            public DBconfig()
+            {
+                Console.WriteLine(GetType().Name);
+            }
             public string GetValue(string key)
             {
                 Console.WriteLine("数据库读取");
@@ -89,17 +94,22 @@ namespace DI1
 
         class StroageImpl:IStorage
         {
-            private readonly IConfig  config;
+            private readonly IEnumerable<IConfig>  config;
 
-            public StroageImpl(IConfig config)
+            public StroageImpl(IEnumerable<IConfig> config)
             {
                 this.config= config;
             }
 
             public void Save(string name, string content)
             {
-                var value = config.GetValue("Server");
-                Console.WriteLine($"Sever:{value} 文件名{name}上传{content}");
+                foreach (var i in config)
+                {
+                    var value = i.GetValue("Server");
+                    Console.WriteLine($"Sever:{value} 文件名{name}上传{content}");
+                    Console.WriteLine("--------------------");
+                }
+               
             }
         }
     }

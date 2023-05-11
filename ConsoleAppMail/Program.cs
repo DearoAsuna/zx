@@ -16,7 +16,7 @@ namespace ConsoleAppMail
                    => new iniFileCoinfigService()
                        { FilePath = "mail.txt" });*/
             collection.AddScoped<IconfigService, ConfigService1>();
-            collection.AddScoped<IconfigService, ceshi>();
+           // collection.AddScoped<IconfigService, ceshi>();
             collection.ADDconfig("mail.txt");
             collection.AddLayeredconfig();
           //  collection.AddScoped<ILogProvider, ConsoleLogProvider>();
