@@ -9,10 +9,11 @@ namespace MysqlEF
 {
     public class MyDbContext:DbContext
     {
+        public DbSet<House> House { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            var conn = "Server=127.0.0.1;User=root;Password=root;Database=ef1;;pooling=true;CharSet=utf8;port=3306";
+            var conn = "Server=127.0.0.1;User=root;Password=root;Database=ef1;";
             optionsBuilder.UseMySql(conn, ServerVersion.AutoDetect(conn));
         }
 
