@@ -7,10 +7,6 @@ namespace web配置环境.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        [HttpPost]
-        public string Demo1()
-        {
-
-        }
+      
     }
 }
