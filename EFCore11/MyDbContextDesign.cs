@@ -13,7 +13,7 @@ namespace EFCore11
             var server = 
                 builder.UseSqlServer("Server=.;" +
                                      "Data Source=LAPTOP-5AQ8PCDO\\SQLEXPRESS;" +
-                                     " Database = demo2;Encrypt=True;Trusted_Connection=True;" +
+                                     " Database = WebTestDemo;Encrypt=True;Trusted_Connection=True;" +
                                      "TrustServerCertificate=True;"
             );
             var context = new MyDbContext(server.Options);

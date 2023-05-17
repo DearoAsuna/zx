@@ -107,5 +107,35 @@ namespace EFcCore_WebAPI.Controllers
            return Ok(list);
        }
 
+       [HttpPost]
+       public async Task<ActionResult<string>> AddPerson(string name,string des)
+       {
+           db.Persons.Add(new Person()
+           {
+               Name = name,
+               Description = des
+           });
+           await db.SaveChangesAsync();
+           return Ok("ok");
+       }
+
+       [HttpPost]
+       public async Task<ActionResult<string>> AddBook(int id,string Bookname,string Booktitle,double price)
+       {
+           var person = db.Persons.SingleOrDefault(a => a.Id == id);
+           if (person==null)
+           {
+               return NotFound("id错了找不到");
+           }
+           person.Books?.Add(new Book()
+           {
+               Title = Booktitle,
+               DateTime = DateTime.Now,
+               Price = price
+           });
+           await  db.SaveChangesAsync();
+           return Ok("添加成功");
+       }
+
     }
 }

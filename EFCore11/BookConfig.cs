@@ -9,6 +9,8 @@ namespace EFCore11
         public void Configure(EntityTypeBuilder<Book> builder)
         {
             builder.ToTable("T_Book");
+            builder.HasOne(a => a.Person)
+                .WithMany(a => a.Books);
         }
     }
 }
