@@ -129,6 +129,7 @@ namespace EFcCore_WebAPI.Controllers
            }
            person.Books?.Add(new Book()
            {
+               Name = Bookname,
                Title = Booktitle,
                DateTime = DateTime.Now,
                Price = price
